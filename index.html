@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>喫茶 木漏れ日 | Komorebi Coffee &amp; Roastery</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Serif JP & Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF8F5',
+            sand: '#F2EDE4',
+            sandDark: '#E6DEC8',
+            espresso: '#2C221E',
+            taupe: '#6E6259',
+            terracotta: '#B86B35',
+            terracottaDark: '#9A5526',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif JP"', 'serif'],
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-cream text-espresso font-sans antialiased selection:bg-terracotta/20 selection:text-espresso">
+
+  <!--  1. HEADER  -->
+  <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur-md border-b border-espresso/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-10 h-10 rounded-full bg-sand flex items-center justify-center border border-espresso/10 group-hover:border-terracotta transition-colors">
+          <!-- Custom Coffee Cup SVG -->
+          <svg class="w-5 h-5 text-terracotta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+            <path d="M6 2v2" />
+            <path d="M10 2v2" />
+            <path d="M14 2v2" />
+          </svg>
+        </div>
+        <div>
+          <span class="block font-serif text-lg sm:text-xl font-bold tracking-wider text-espresso">喫茶 木漏れ日</span>
+          <span class="block text-[10px] tracking-[0.2em] text-taupe uppercase">Komorebi Coffee &amp; Roastery</span>
+        </div>
+      </a>
+
+  <!-- Desktop Navigation -->
+  <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-taupe">
+    <a href="#concept" class="hover:text-terracotta transition-colors py-2">コンセプト</a>
+    <a href="#menu" class="hover:text-terracotta transition-colors py-2">メニュー</a>
+    <a href="#news" class="hover:text-terracotta transition-colors py-2">お知らせ</a>
+    <a href="#access" class="hover:text-terracotta transition-colors py-2">店舗情報</a>
+    <button
+      type="button"
+      data-open-reservation
+      class="ml-2 px-5 py-2.5 rounded-full bg-terracotta text-white font-medium hover:bg-terracottaDark transition-all shadow-sm hover:shadow active:scale-95"
+    >
+      席を予約する
+    </button>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <div class="flex items-center gap-2 md:hidden">
+    <button
+      type="button"
+      data-open-reservation
+      class="px-3.5 py-2 rounded-full bg-terracotta text-white text-xs font-medium hover:bg-terracottaDark transition-colors"
+    >
+      予約
+    </button>
+    <button
+      id="mobileMenuBtn"
+      type="button"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      class="p-2.5 rounded-xl text-espresso hover:bg-sand transition-colors"
+    >
+      <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile Navigation Drawer -->
+<div id="mobileMenu" class="hidden md:hidden bg-cream border-b border-espresso/10 px-6 pt-3 pb-6 space-y-2">
+  <a href="#concept" class="mobile-nav-link block py-3 text-base font-medium text-espresso border-b border-espresso/5 hover:text-terracotta">コンセプト</a>
+  <a href="#menu" class="mobile-nav-link block py-3 text-base font-medium text-espresso border-b border-espresso/5 hover:text-terracotta">メニュー</a>
+  <a href="#news" class="mobile-nav-link block py-3 text-base font-medium text-espresso border-b border-espresso/5 hover:text-terracotta">お知らせ</a>
+  <a href="#access" class="mobile-nav-link block py-3 text-base font-medium text-espresso hover:text-terracotta">店舗情報</a>
+  <div class="pt-3">
+    <button
+      type="button"
+      data-open-reservation
+      class="w-full py-3 rounded-xl bg-terracotta text-white font-medium hover:bg-terracottaDark transition-colors"
+    >
+      席を予約する
+    </button>
+  </div>
+</div>
+  </header>
+
+  <main>
+    <!--  2. HERO SECTION  -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-sand via-cream to-sandDark/60 py-20 sm:py-28 lg:py-36">
+      <!-- Atmospheric Light Rays & Botanical SVG Overlay -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <!-- Warm Sunbeam Gradients -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-terracotta/10 blur-3xl"></div>
+        <div class="absolute bottom-0 left-10 w-80 h-80 rounded-full bg-amber-200/20 blur-3xl"></div>
+
+    <!-- Custom Botanical Leaves & Light Rays Illustration -->
+    <svg class="absolute right-0 top-0 h-full w-full max-w-4xl opacity-35 text-terracotta" viewBox="0 0 800 600" fill="none">
+      <!-- Diagonal Sunbeams -->
+      <polygon points="550,0 800,0 450,600 220,600" fill="url(#sunRay)" />
+      <polygon points="720,0 800,0 640,600 500,600" fill="url(#sunRay)" />
+      <!-- Botanical Branches -->
+      <path d="M780 40 C680 120, 620 230, 560 360" stroke="#6E6259" stroke-width="1.5" stroke-opacity="0.4" />
+      <path d="M675 130 C630 115, 595 130, 580 160 C615 165, 650 155, 675 130 Z" fill="#B86B35" fill-opacity="0.18" />
+      <path d="M635 200 C675 180, 715 190, 730 220 C695 230, 660 220, 635 200 Z" fill="#6E6259" fill-opacity="0.18" />
+      <path d="M600 270 C555 255, 520 270, 505 300 C540 305, 575 295, 600 270 Z" fill="#B86B35" fill-opacity="0.15" />
+      <!-- Minimal Coffee Dripper Silhouette -->
+      <circle cx="640" cy="430" r="95" stroke="#B86B35" stroke-opacity="0.2" stroke-dasharray="4 6" />
+      <defs>
+        <linearGradient id="sunRay" x1="650" y1="0" x2="400" y2="600" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#B86B35" stop-opacity="0.14" />
+          <stop offset="100%" stop-color="#FAF8F5" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left Text Content -->
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream/90 border border-terracotta/30 text-terracotta text-xs font-medium tracking-widest">
+          <span class="w-1.5 h-1.5 rounded-full bg-terracotta"></span>
+          自家焙煎珈琲と季節の焼き菓子
+        </div>
+        <h1 class="font-serif text-3xl sm:text-5xl lg:text-[3.25rem] font-bold text-espresso leading-tight tracking-wide">
+          一杯の珈琲と、<br class="hidden sm:inline" />静かな時間を。
+        </h1>
+        <p class="text-taupe text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+          木々の葉をすり抜ける柔らかな光のように、日常の喧騒から少しだけ離れて深呼吸できる場所。丁寧にハンドドリップした自家焙煎スペシャルティコーヒーと、素朴で優しい手作りスイーツをご用意してお待ちしております。
+        </p>
+        <div class="pt-3 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <a
+            href="#menu"
+            class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-espresso text-cream font-medium text-sm tracking-wider hover:bg-espresso/90 transition-all shadow-sm text-center"
+          >
+            メニューを見る
+          </a>
+          <button
+            type="button"
+            data-open-reservation
+            class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-terracotta text-white font-medium text-sm tracking-wider hover:bg-terracottaDark transition-all shadow-sm"
+          >
+            お席を予約する
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Decorative Cafe Illustration Card -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="w-full max-w-sm rounded-3xl bg-cream/90 backdrop-blur-sm border border-espresso/10 p-6 sm:p-8 shadow-lg">
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-b from-sand to-sandDark/70 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+            <!-- Hand-drawn Style Pour-Over Coffee SVG Art -->
+            <svg class="w-40 h-40 text-espresso" viewBox="0 0 180 180" fill="none">
+              <!-- Steam lines -->
+              <path d="M72 34 C68 25, 76 19, 72 10" stroke="#B86B35" stroke-width="2" stroke-linecap="round" />
+              <path d="M90 30 C86 21, 94 15, 90 6" stroke="#B86B35" stroke-width="2" stroke-linecap="round" />
+              <path d="M108 34 C104 25, 112 19, 108 10" stroke="#B86B35" stroke-width="2" stroke-linecap="round" />
+              <!-- Dripper -->
+              <polygon points="56,46 124,46 106,82 74,82" fill="#FAF8F5" stroke="#2C221E" stroke-width="2.2" stroke-linejoin="round" />
+              <path d="M120 52 C133 52, 133 70, 113 70" stroke="#2C221E" stroke-width="2.2" fill="none" />
+              <!-- Coffee Drop -->
+              <circle cx="90" cy="91" r="2.5" fill="#B86B35" />
+              <!-- Glass Server -->
+              <path d="M68 100 L112 100 L122 142 C123 147, 119 152, 114 152 L66 152 C61 152, 57 147, 58 142 Z" fill="#FAF8F5" stroke="#2C221E" stroke-width="2.2" />
+              <!-- Coffee Liquid inside server -->
+              <path d="M62 126 L118 126 L121 142 C122 146, 119 151, 114 151 L66 151 C61 151, 58 146, 59 142 Z" fill="#B86B35" fill-opacity="0.75" />
+              <!-- Server Handle -->
+              <path d="M115 108 C134 108, 136 135, 120 138" stroke="#2C221E" stroke-width="2.2" fill="none" stroke-linecap="round" />
+              <!-- Wooden Coaster -->
+              <rect x="46" y="154" width="88" height="6" rx="3" fill="#6E6259" />
+            </svg>
+            <span class="mt-2 font-serif text-xs tracking-widest text-taupe">HAND DRIP &amp; ROAST</span>
+          </div>
+          <div class="mt-5 text-center space-y-1">
+            <p class="font-serif text-base font-semibold text-espresso">本日の焙煎：エチオピア イルガチェフェ</p>
+            <p class="text-xs text-taupe">ジャスミンのような華やかな香りと澄んだ余韻</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. CONCEPT SECTION ==================== -->
+<section id="concept" class="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+    <span class="text-xs font-medium tracking-[0.25em] text-terracotta uppercase">Concept</span>
+    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso">木漏れ日の３つのこだわり</h2>
+    <p class="text-sm sm:text-base text-taupe leading-relaxed">
+      毎日通いたくなるような穏やかな空間と、素材本来の味わいを大切にした一杯をお届けします。
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+    <!-- Feature 1 -->
+    <div class="rounded-2xl bg-sand p-8 border border-espresso/5 hover:border-terracotta/30 transition-all">
+      <div class="w-12 h-12 rounded-2xl bg-cream flex items-center justify-center text-terracotta mb-6 shadow-xs">
+        <!-- Coffee Bean SVG -->
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <ellipse cx="12" cy="12" rx="6" ry="9" transform="rotate(30 12 12)" />
+          <path d="M15.5 5.5 C12 9, 12 15, 8.5 18.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-espresso mb-3">自家焙煎スペシャルティ豆</h3>
+      <p class="text-sm text-taupe leading-relaxed">
+        世界各地の農園から厳選した生豆を、店内の小型焙煎機で毎朝少量ずつ丁寧に焙煎。豆の個性を引き出す最適な湯温と蒸らし時間でハンドドリップいたします。
+      </p>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="rounded-2xl bg-sand p-8 border border-espresso/5 hover:border-terracotta/30 transition-all">
+      <div class="w-12 h-12 rounded-2xl bg-cream flex items-center justify-center text-terracotta mb-6 shadow-xs">
+        <!-- Pastry / Cake SVG -->
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" />
+          <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1" />
+          <path d="M2 21h20" />
+          <path d="M7 8v3" />
+          <path d="M12 8v3" />
+          <path d="M17 8v3" />
+          <path d="M7 4h.01" />
+          <path d="M12 4h.01" />
+          <path d="M17 4h.01" />
+        </svg>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-espresso mb-3">季節の手作り焼き菓子</h3>
+      <p class="text-sm text-taupe leading-relaxed">
+        国産小麦と平飼い卵、きび砂糖など体に優しい素材を使用。珈琲とのペアリングを考え抜いたクラシックプリンや、旬の果実を使ったタルトを毎日焼き上げています。
+      </p>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="rounded-2xl bg-sand p-8 border border-espresso/5 hover:border-terracotta/30 transition-all">
+      <div class="w-12 h-12 rounded-2xl bg-cream flex items-center justify-center text-terracotta mb-6 shadow-xs">
+        <!-- Leaf / Sunlight Space SVG -->
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+        </svg>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-espresso mb-3">心地よい余白の空間</h3>
+      <p class="text-sm text-taupe leading-relaxed">
+        無垢材のテーブルと柔らかな自然光が差し込む店内。お一人での読書や思考の整理、大切な方との語らいなど、それぞれの時間をゆったりと過ごせる席配置にこだわりました。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. INTERACTIVE MENU SECTION ==================== -->
+<section id="menu" class="py-20 sm:py-24 bg-sand/60 border-y border-espresso/5">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+      <span class="text-xs font-medium tracking-[0.25em] text-terracotta uppercase">Menu</span>
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso">お品書き</h2>
+      <p class="text-sm sm:text-base text-taupe">
+        ご注文をいただいてから一杯ずつ丁寧に抽出いたします。
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" role="tablist" aria-label="メニューカテゴリー">
+      <button
+        type="button"
+        data-filter="all"
+        class="menu-tab active px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-espresso text-cream shadow-xs"
+      >
+        すべて
+      </button>
+      <button
+        type="button"
+        data-filter="drink"
+        class="menu-tab px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-cream text-taupe hover:text-espresso border border-espresso/10"
+      >
+        珈琲・ドリンク
+      </button>
+      <button
+        type="button"
+        data-filter="sweets"
+        class="menu-tab px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-cream text-taupe hover:text-espresso border border-espresso/10"
+      >
+        自家製スイーツ
+      </button>
+      <button
+        type="button"
+        data-filter="food"
+        class="menu-tab px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-cream text-taupe hover:text-espresso border border-espresso/10"
+      >
+        軽食
+      </button>
+    </div>
+
+    <!-- Menu Items Grid -->
+    <div id="menuGrid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <!-- Item 1 -->
+      <article data-category="drink" class="menu-item rounded-2xl bg-cream p-6 border border-espresso/10 flex flex-col justify-between transition-all hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-terracotta/10 text-terracotta mb-1.5">看板ブレンド</span>
+              <h3 class="font-serif text-lg font-bold text-espresso">木漏れ日ブレンド（Hot / Ice）</h3>
+            </div>
+            <span class="font-serif text-lg font-bold text-espresso shrink-0">¥600</span>
+          </div>
+          <p class="text-sm text-taupe leading-relaxed">
+            ブラジルとグアテマラをベースにした中深煎り。ナッツのような香ばしさと、ほのかな甘みが調和する当店自慢の一杯。
+          </p>
+        </div>
+      </article>
+
+      <!-- Item 2 -->
+      <article data-category="drink" class="menu-item rounded-2xl bg-cream p-6 border border-espresso/10 flex flex-col justify-between transition-all hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-sand text-taupe mb-1.5">シングルオリジン</span>
+              <h3 class="font-serif text-lg font-bold text-espresso">エチオピア イルガチェフェ</h3>
+            </div>
+            <span class="font-serif text-lg font-bold text-espresso shrink-0">¥680</span>
+          </div>
+          <p class="text-sm text-taupe leading-relaxed">
+            浅煎り仕上げ。アールグレイやジャスミンを思わせる華やかな香りと、柑橘系の爽やかで澄んだ酸味が楽しめます。
+          </p>
+        </div>
+      </article>
+
+      <!-- Item 3 -->
+      <article data-category="drink" class="menu-item rounded-2xl bg-cream p-6 border border-espresso/10 flex flex-col justify-between transition-all hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-sand text-taupe mb-1.5">和のドリンク</span>
+              <h3 class="font-serif text-lg font-bold text-espresso">焙煎ほうじ茶ラテ</h3>
+            </div>
+            <span class="font-serif text-lg font-bold text-espresso shrink-0">¥650</span>
+          </div>
+          <p class="text-sm text-taupe leading-relaxed">
+            京都・宇治の厳選茶葉を香ばしく煎り上げ、きめ細かくスチームした濃厚ミルクと合わせました。きび砂糖の優しい甘さ。
+          </p>
+        </div>
+      </article>
+
+      <!-- Item 4 -->
+      <article data-category="sweets" class="menu-item rounded-2xl bg-cream p-6 border border-espresso/10 flex flex-col justify-between transition-all hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-terracotta/10 text-terracotta mb-1.5">一番人気</span>
+              <h3 class="font-serif text-lg font-bold text-espresso">自家製クラシックプリン</h3>
+            </div>
+            <span class="font-serif text-lg font-bold text-espresso shrink-0">¥550</span>
+          </div>
+          <p class="text-sm text-taupe leading-relaxed">
+            濃厚な平飼い卵と牛乳でじっくり蒸し上げた、少し固めの昔ながらのプリン。ほろ苦い焦がしカラメルと生クリームを添えて。
+          </p>
+        </div>
+      </article>
+
+      <!-- Item 5 -->
+      <article data-category="sweets" class="menu-item rounded-2xl bg-cream p-6 border border-espresso/10 flex flex-col justify-between transition-all hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-sand text-taupe mb-1.5">数量限定</span>
+              <h3 class="font-serif text-lg font-bold text-espresso">季節のタルト（和栗とアーモンド）</h3>
+            </div>
+            <span class="font-serif text-lg font-bold text-espresso shrink-0">¥650</span>
+          </div>
+          <p class="text-sm text-taupe leading-relaxed">
+            発酵バター香るサクサクのタルト生地に、香ばしいアーモンドクリームと旬の和栗の渋皮煮を贅沢に閉じ込めました。
+          </p>
+        </div>
+      </article>
+
+      <!-- Item 6 -->
+      <article data-category="food" class="menu-item rounded-2xl bg-cream p-6 border border-espresso/10 flex flex-col justify-between transition-all hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-sand text-taupe mb-1.5">モーニング・軽食</span>
+              <h3 class="font-serif text-lg font-bold text-espresso">厚切りバタートースト</h3>
+            </div>
+            <span class="font-serif text-lg font-bold text-espresso shrink-0">¥500</span>
+          </div>
+          <p class="text-sm text-taupe leading-relaxed">
+            地元のベーカリーから届く湯種食パンを4cmの厚切りに。外はカリッと中はもっちり焼き上げ、北海道産発酵バターと百花蜜を添えました。
+          </p>
+        </div>
+      </article>
+
+      <!-- Item 7 -->
+      <article data-category="food" class="menu-item rounded-2xl bg-cream p-6 border border-espresso/10 flex flex-col justify-between transition-all hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-sand text-taupe mb-1.5">ランチにも</span>
+              <h3 class="font-serif text-lg font-bold text-espresso">たっぷり卵の特製サンドイッチ</h3>
+            </div>
+            <span class="font-serif text-lg font-bold text-espresso shrink-0">¥780</span>
+          </div>
+          <p class="text-sm text-taupe leading-relaxed">
+            出汁を効かせてふっくら焼き上げた厚焼き卵と、ピリッと粒マスタードを塗ったふわふわパンの温かいサンドイッチです。
+          </p>
+        </div>
+      </article>
+
+      <!-- Item 8 -->
+      <article data-category="sweets" class="menu-item rounded-2xl bg-cream p-6 border border-espresso/10 flex flex-col justify-between transition-all hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-sand text-taupe mb-1.5">焼き菓子</span>
+              <h3 class="font-serif text-lg font-bold text-espresso">焦がしバターのフィナンシェ（2個）</h3>
+            </div>
+            <span class="font-serif text-lg font-bold text-espresso shrink-0">¥480</span>
+          </div>
+          <p class="text-sm text-taupe leading-relaxed">
+            アーモンドプードルをたっぷり使い、高温で一気に焼き上げました。深煎り珈琲との相性が抜群です。
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <p class="text-center text-xs text-taupe mt-8">
+      ※表示価格はすべて税込です。ドリンクとスイーツのセット注文で100円引きとなります。
+    </p>
+  </div>
+</section>
+
+<!-- ==================== 5. NEWS / EVENT NOTICE ==================== -->
+<section id="news" class="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+  <div class="text-center mb-12 space-y-3">
+    <span class="text-xs font-medium tracking-[0.25em] text-terracotta uppercase">News &amp; Events</span>
+    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso">お知らせ・季節の催し</h2>
+  </div>
+
+  <div class="divide-y divide-espresso/10 border-y border-espresso/10">
+    <!-- News 1 -->
+    <div class="py-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+      <div class="flex items-center gap-3 shrink-0">
+        <time class="text-sm font-mono text-taupe">2026.11.15</time>
+        <span class="px-2.5 py-0.5 rounded-md text-xs font-medium bg-terracotta text-white">イベント</span>
+      </div>
+      <h3 class="font-serif text-base sm:text-lg font-semibold text-espresso">
+        秋の夜長キャンドルナイト開催のお知らせ（11/28・29 18:00〜21:00）
+      </h3>
+    </div>
+
+    <!-- News 2 -->
+    <div class="py-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+      <div class="flex items-center gap-3 shrink-0">
+        <time class="text-sm font-mono text-taupe">2026.11.02</time>
+        <span class="px-2.5 py-0.5 rounded-md text-xs font-medium bg-sand text-espresso border border-espresso/10">季節限定</span>
+      </div>
+      <h3 class="font-serif text-base sm:text-lg font-semibold text-espresso">
+        季節限定「和栗とアーモンドのタルト」および「深煎りオータムブレンド」が始まりました
+      </h3>
+    </div>
+
+    <!-- News 3 -->
+    <div class="py-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+      <div class="flex items-center gap-3 shrink-0">
+        <time class="text-sm font-mono text-taupe">2026.10.20</time>
+        <span class="px-2.5 py-0.5 rounded-md text-xs font-medium bg-sand text-taupe border border-espresso/10">お知らせ</span>
+      </div>
+      <h3 class="font-serif text-base sm:text-lg font-semibold text-espresso">
+        自家焙煎コーヒー豆のオンライン予約・店頭受け取りサービスを開始しました
+      </h3>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 6. ACCESS & STORE INFO ==================== -->
+<section id="access" class="py-20 sm:py-24 bg-sand/60 border-t border-espresso/5">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 space-y-3">
+      <span class="text-xs font-medium tracking-[0.25em] text-terracotta uppercase">Access &amp; Info</span>
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso">店舗情報・アクセス</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <!-- Store Details -->
+      <div class="lg:col-span-6 rounded-3xl bg-cream p-7 sm:p-10 border border-espresso/10 space-y-6">
+        <div>
+          <h3 class="font-serif text-xl font-bold text-espresso">喫茶 木漏れ日</h3>
+          <p class="text-xs tracking-widest text-taupe mt-0.5">KOMOREBI COFFEE &amp; ROASTERY</p>
+        </div>
+
+        <dl class="space-y-4 text-sm">
+          <div class="grid grid-cols-3 gap-2 border-b border-espresso/5 pb-3">
+            <dt class="font-medium text-taupe">住所</dt>
+            <dd class="col-span-2 text-espresso">〒154-0000 東京都世田谷区緑が丘 2-14-8 木漏れ日ビル 1F</dd>
+          </div>
+          <div class="grid grid-cols-3 gap-2 border-b border-espresso/5 pb-3">
+            <dt class="font-medium text-taupe">アクセス</dt>
+            <dd class="col-span-2 text-espresso">東急線「緑が丘駅」南口より徒歩4分（緑道沿い）</dd>
+          </div>
+          <div class="grid grid-cols-3 gap-2 border-b border-espresso/5 pb-3">
+            <dt class="font-medium text-taupe">営業時間</dt>
+            <dd class="col-span-2 text-espresso">9:00 〜 19:00（L.O. 18:30）</dd>
+          </div>
+          <div class="grid grid-cols-3 gap-2 border-b border-espresso/5 pb-3">
+            <dt class="font-medium text-taupe">定休日</dt>
+            <dd class="col-span-2 text-espresso">毎週水曜日・第2木曜日</dd>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <dt class="font-medium text-taupe">設備・座席</dt>
+            <dd class="col-span-2 text-espresso">全22席（カウンター6席 / テーブル16席）・全席禁煙・Wi-Fi / 一部電源あり</dd>
+          </div>
+        </dl>
+
+        <div class="pt-2">
+          <button
+            type="button"
+            data-open-reservation
+            class="w-full py-3.5 rounded-xl bg-terracotta text-white font-medium text-sm hover:bg-terracottaDark transition-colors shadow-xs"
+          >
+            Webからお席を予約する
+          </button>
+        </div>
+      </div>
+
+      <!-- Custom Illustrated Neighborhood Map SVG -->
+      <div class="lg:col-span-6">
+        <div class="rounded-3xl bg-cream p-5 sm:p-6 border border-espresso/10 shadow-xs">
+          <div class="aspect-[4/3] w-full rounded-2xl bg-[#F5F1E8] overflow-hidden relative">
+            <svg class="w-full h-full" viewBox="0 0 500 375" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Green Park Area -->
+              <path d="M0 0 H190 C175 70, 140 110, 95 130 C50 150, 20 140, 0 130 Z" fill="#DCE5D4" />
+              <text x="45" y="65" fill="#5D7052" font-size="13" font-family="Noto Sans JP, sans-serif" font-weight="500">木漏れ日緑道公園</text>
+              <!-- Trees in Park -->
+              <circle cx="35" cy="95" r="12" fill="#B8C9AC" />
+              <circle cx="135" cy="40" r="14" fill="#B8C9AC" />
+
+              <!-- Roads -->
+              <!-- Horizontal Main Street -->
+              <path d="M0 245 L500 245" stroke="#FFFFFF" stroke-width="26" />
+              <path d="M0 245 L500 245" stroke="#E2D9C8" stroke-width="2" stroke-dasharray="6 6" />
+              <!-- Vertical Street -->
+              <path d="M295 0 L295 375" stroke="#FFFFFF" stroke-width="22" />
+              <!-- Diagonal Promenade -->
+              <path d="M120 375 L235 0" stroke="#EAE4D7" stroke-width="14" />
+
+              <!-- Station Box -->
+              <rect x="45" y="275" width="115" height="44" rx="8" fill="#FAF8F5" stroke="#6E6259" stroke-width="2" />
+              <text x="102" y="302" text-anchor="middle" fill="#2C221E" font-size="13" font-family="Noto Sans JP, sans-serif" font-weight="700">緑が丘駅 南口</text>
+
+              <!-- Walking Route Dotted Line -->
+              <path d="M102 275 L102 245 L295 245 L295 140 L255 140" stroke="#B86B35" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 6" />
+
+              <!-- Cafe Pin & Building -->
+              <rect x="200" y="110" width="52" height="52" rx="12" fill="#B86B35" />
+              <!-- Mini Cup Icon inside Pin -->
+              <path d="M216 130 H234 V140 C234 143 231 146 228 146 H222 C219 146 216 143 216 140 Z" fill="#FAF8F5" />
+              <path d="M234 132 H237 C239 132 239 138 237 138 H234" stroke="#FAF8F5" stroke-width="1.8" />
+
+              <!-- Label Callout -->
+              <rect x="155" y="64" width="142" height="36" rx="18" fill="#2C221E" />
+              <text x="226" y="87" text-anchor="middle" fill="#FAF8F5" font-size="13" font-family="Noto Serif JP, serif" font-weight="700">喫茶 木漏れ日</text>
+
+              <!-- Compass -->
+              <g transform="translate(445, 50)">
+                <circle cx="0" cy="0" r="18" fill="#FAF8F5" stroke="#6E6259" stroke-width="1.2" />
+                <polygon points="0,-11 4,2 0,-1 -4,2" fill="#B86B35" />
+                <text x="0" y="13" text-anchor="middle" fill="#6E6259" font-size="9" font-weight="bold">N</text>
+              </g>
+            </svg>
+          </div>
+          <p class="text-xs text-taupe text-center mt-3">
+            緑が丘駅南口から大通りを東へ進み、緑道沿いの角を左折してすぐ左手です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <!--  7. FOOTER  -->
+  <footer class="bg-espresso text-cream/80 py-14 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="text-center md:text-left">
+        <p class="font-serif text-xl font-bold text-cream tracking-wider">喫茶 木漏れ日</p>
+        <p class="text-xs tracking-[0.2em] text-cream/60 mt-1">KOMOREBI COFFEE &amp; ROASTERY</p>
+      </div>
+
+  <div class="flex flex-wrap justify-center gap-6 text-sm">
+    <a href="#concept" class="hover:text-terracotta transition-colors">コンセプト</a>
+    <a href="#menu" class="hover:text-terracotta transition-colors">メニュー</a>
+    <a href="#news" class="hover:text-terracotta transition-colors">お知らせ</a>
+    <a href="#access" class="hover:text-terracotta transition-colors">店舗情報</a>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <a href="#access" aria-label="Instagram" class="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center hover:border-terracotta hover:text-terracotta transition-colors">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      </svg>
+    </a>
+    <a href="#access" aria-label="X (Twitter)" class="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center hover:border-terracotta hover:text-terracotta transition-colors">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+      </svg>
+    </a>
+  </div>
+</div>
+
+<div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-cream/10 text-center text-xs text-cream/50">
+  &copy; 2026 喫茶 木漏れ日 (Komorebi Coffee &amp; Roastery). All Rights Reserved. ※これはAI生成デモ用の架空店舗サイトです。
+</div>
+  </footer>
+
+  <!--  8. RESERVATION MODAL  -->
+  <div
+    id="reservationModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-espresso/60 backdrop-blur-xs"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <div class="bg-cream w-full max-w-md rounded-3xl border border-espresso/10 shadow-2xl overflow-hidden animate-fadeIn">
+      <!-- Modal Header -->
+      <div class="px-6 py-5 bg-sand flex items-center justify-between border-b border-espresso/10">
+        <div>
+          <h3 id="modalTitle" class="font-serif text-lg font-bold text-espresso">お席のご予約</h3>
+          <p class="text-xs text-taupe">喫茶 木漏れ日 オンライン受付</p>
+        </div>
+        <button
+          id="closeModalBtn"
+          type="button"
+          aria-label="閉じる"
+          class="p-2 rounded-full text-taupe hover:bg-cream hover:text-espresso transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+  <!-- Modal Body: Form View -->
+  <form id="reservationForm" class="p-6 space-y-4" novalidate>
+    <div id="formError" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs"></div>
+
+    <div class="grid grid-cols-2 gap-3">
+      <div>
+        <label for="resDate" class="block text-xs font-medium text-espresso mb-1">ご来店日 <span class="text-terracotta">*</span></label>
+        <input
+          id="resDate"
+          type="date"
+          required
+          class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-espresso/15 text-sm text-espresso focus:outline-none focus:border-terracotta"
+        />
+      </div>
+      <div>
+        <label for="resTime" class="block text-xs font-medium text-espresso mb-1">ご希望時間 <span class="text-terracotta">*</span></label>
+        <select
+          id="resTime"
+          class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-espresso/15 text-sm text-espresso focus:outline-none focus:border-terracotta"
+        >
+          <option value="10:00">10:00</option>
+          <option value="11:30">11:30</option>
+          <option value="13:00">13:00</option>
+          <option value="14:30" selected>14:30</option>
+          <option value="16:00">16:00</option>
+          <option value="17:30">17:30</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label for="resGuests" class="block text-xs font-medium text-espresso mb-1">人数 <span class="text-terracotta">*</span></label>
+      <select
+        id="resGuests"
+        class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-espresso/15 text-sm text-espresso focus:outline-none focus:border-terracotta"
+      >
+        <option value="1名様">1名様（カウンター・窓際席）</option>
+        <option value="2名様" selected>2名様</option>
+        <option value="3名様">3名様</option>
+        <option value="4名様">4名様</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="resName" class="block text-xs font-medium text-espresso mb-1">お名前（カタカナ・漢字） <span class="text-terracotta">*</span></label>
+      <input
+        id="resName"
+        type="text"
+        placeholder="例：山田 花子"
+        required
+        class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-espresso/15 text-sm text-espresso focus:outline-none focus:border-terracotta"
+      />
+    </div>
+
+    <div>
+      <label for="resNote" class="block text-xs font-medium text-espresso mb-1">ご要望（任意）</label>
+      <textarea
+        id="resNote"
+        rows="2"
+        placeholder="窓際希望、季節のタルト取り置き希望など"
+        class="w-full px-3.5 py-2 rounded-xl bg-white border border-espresso/15 text-sm text-espresso focus:outline-none focus:border-terracotta"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full py-3.5 rounded-xl bg-terracotta text-white font-medium text-sm hover:bg-terracottaDark transition-colors shadow-sm"
+    >
+      この内容で予約を確定する
+    </button>
+  </form>
+
+  <!-- Modal Body: Confirmation View -->
+  <div id="reservationSuccess" class="hidden p-7 text-center space-y-4">
+    <div class="w-14 h-14 rounded-full bg-terracotta/15 text-terracotta flex items-center justify-center mx-auto">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+    <h4 class="font-serif text-xl font-bold text-espresso">ご予約を承りました</h4>
+    <p class="text-sm text-taupe leading-relaxed">
+      ご来店を心よりお待ちしております。<br />以下の内容でお席を確保いたしました。
+    </p>
+    <div id="bookingSummary" class="rounded-2xl bg-sand p-4 text-left text-xs space-y-1.5 text-espresso"></div>
+    <button
+      id="resetBookingBtn"
+      type="button"
+      class="w-full py-3 rounded-xl bg-espresso text-cream text-sm font-medium hover:bg-espresso/90 transition-colors"
+    >
+      閉じる
+    </button>
+  </div>
+</div>
+  </div>
+
+  <!--  JAVASCRIPT INTERACTIVITY  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Mobile Navigation Toggle
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIconOpen = document.getElementById('menuIconOpen');
+      const menuIconClose = document.getElementById('menuIconClose');
+
+      function toggleMobileMenu(forceClose = false) {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (forceClose || !isHidden) {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          menuIconOpen.classList.add('hidden');
+          menuIconClose.classList.remove('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(true));
+      });
+
+      // 2. Menu Category Filtering
+      const tabs = document.querySelectorAll('.menu-tab');
+      const menuItems = document.querySelectorAll('.menu-item');
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const filter = tab.getAttribute('data-filter');
+
+          // Update active button styling
+          tabs.forEach((t) => {
+            t.classList.remove('bg-espresso', 'text-cream', 'shadow-xs');
+            t.classList.add('bg-cream', 'text-taupe', 'border', 'border-espresso/10');
+          });
+          tab.classList.add('bg-espresso', 'text-cream', 'shadow-xs');
+          tab.classList.remove('bg-cream', 'text-taupe', 'border', 'border-espresso/10');
+
+          // Show / Hide menu cards
+          menuItems.forEach((item) => {
+            const category = item.getAttribute('data-category');
+            if (filter = 'all' || category = filter) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // 3. Reservation Modal Logic
+      const modal = document.getElementById('reservationModal');
+      const openBtns = document.querySelectorAll('[data-open-reservation]');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const resetBookingBtn = document.getElementById('resetBookingBtn');
+      const form = document.getElementById('reservationForm');
+      const successView = document.getElementById('reservationSuccess');
+      const formError = document.getElementById('formError');
+      const bookingSummary = document.getElementById('bookingSummary');
+      const resDateInput = document.getElementById('resDate');
+
+      // Set default date to tomorrow
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      resDateInput.value = tomorrow.toISOString().split('T')[0];
+      resDateInput.min = new Date().toISOString().split('T')[0];
+
+      function openModal() {
+        toggleMobileMenu(true);
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        // Reset form state after closing
+        setTimeout(() => {
+          form.classList.remove('hidden');
+          successView.classList.add('hidden');
+          formError.classList.add('hidden');
+        }, 200);
+      }
+
+      openBtns.forEach((btn) => btn.addEventListener('click', openModal));
+      closeModalBtn.addEventListener('click', closeModal);
+      resetBookingBtn.addEventListener('click', closeModal);
+
+      // Close on backdrop click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // Handle Reservation Submission
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const date = resDateInput.value;
+        const time = document.getElementById('resTime').value;
+        const guests = document.getElementById('resGuests').value;
+        const name = document.getElementById('resName').value.trim();
+        const note = document.getElementById('resNote').value.trim();
+
+        if (!date || !name) {
+          formError.textContent = 'ご来店日とお名前を入力してください。';
+          formError.classList.remove('hidden');
+          return;
+        }
+
+        formError.classList.add('hidden');
+        bookingSummary.innerHTML = `
+          <div><span class="text-taupe">お名前：</span><strong>${escapeHTML(name)} 様</strong></div>
+          <div><span class="text-taupe">日時：</span><strong>${escapeHTML(date)} ${escapeHTML(time)}〜</strong></div>
+          <div><span class="text-taupe">人数：</span><strong>${escapeHTML(guests)}</strong></div>
+          ${note ? `<div><span class="text-taupe">ご要望：</span>${escapeHTML(note)}</div>` : ''}
+        `;
+
+        form.classList.add('hidden');
+        successView.classList.remove('hidden');
+      });
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>"']/g, (m) => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+        }[m]));
+      }
+    });
+  </script>
+
+</body>
+</html>
+
